@@ -1,18 +1,37 @@
 /**
- * Produces families of related objects without specifying their concrete
- * classes.
+ * Resource: https://refactoring.guru/design-patterns/abstract-factory
  * 
- * Imagine you're creating a furniture shop simulator. Your code consists of
- * the classes that represent:
+ * Summary
+ *      Allows production of families of related objects without specifying
+ *      their concrete classes.
  * 
- * 1. A family of related products: Chair, Sofa, CoffeeTable
- * 2. Variants of this family: Modern, Fictorian, ArtDeco
+ * Applicability
+ *      - Working with various families of related products and do not want
+ *          it to depend on the concrete classes of those products; they may be
+ *          unknown or you simply want to allow for future extensibility.
  * 
- * - Declare interfaces for each distinct product then you can make all variants
- *      of products following those interfaces.
- * - Declare abstract factory, an interface with a list of creation methods for
- *      all products that are part of that product family (i.e., createChair);
- *      returns abstract product types.
+ * How to implement
+ *      1. Map out matrix of distinct product types
+ *      2. Declare abstract interfaces for all product types. Make concrete
+ *          classes implement these interfaces
+ *      3. Declare abstract factory interface with a set of creation methods for
+ *          abstract products
+ *      4. Implement a set of concrete factory classes, one for each variant
+ *      5. Create factory initialization code. Should instantiate one of the
+ *          concrete factory classes and pass this factory object to all classes
+ *          that construct products
+ *      6. Replace all direct calls to product constructors with calls to
+ *          appropriate creation method on the factory object
+ * 
+ * Pros
+ *      - Product compatibilities
+ *      - Avoid tight coupling between concrete products and client code
+ *      - Single Responsibility Principle via extracting product creation code
+ *      - Open/Closed Principle via introduction of new variants without
+ *          breaking existing code\
+ * 
+ * Cons
+ *      - May get complicated due to lots of new interfaces and classes
  */
 
  /**
