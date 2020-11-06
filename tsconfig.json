@@ -12,7 +12,7 @@
     "pretty": true,
     "strict": true,
     "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": false,
     "target": "ES6",
     "watch": true
   }
